@@ -1,0 +1,232 @@
+# Import data
+sc <- data.frame(day = Sugar_Contents$Day,
+                 LD = Sugar_Contents$LD,
+                 YDWM = Sugar_Contents$YDWM,
+                 ZM2 = Sugar_Contents$ZM2,
+                 YC = Sugar_Contents$YC,
+                 HY4 = Sugar_Contents$HY4
+                 )
+
+
+library(ggplot2)
+library(ggpmisc)
+library(ggpubr)
+library(gcookbook)
+
+SCP5 <- ggplot(sc, aes(x = day, y = HY4), )+
+  geom_point(data = sc, aes(x = day, y = HY4),
+             size=3, color="red", alpha=0.3)+
+  labs(x = "Day",
+       y = expression(paste(bold("Content")) ~ mu * g))+
+  geom_smooth(method = "loess", ## Locally weighted regression
+              se = FALSE, 
+              size = 1,
+              span = 0.8)+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..eq.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right", vjust = 0.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..rr.label.., 
+                                 ..adj.rr.label.., ## Show adjusted R2
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 1.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..AIC.label..,
+                                 ..BIC.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 3.2
+  )+
+  theme_bw()+
+  theme(axis.title = element_text(
+    family = "sans",## Caption font
+    face='bold', ## Font appearance
+    size=15, ## Font size
+    lineheight = 1),## Tag line spacing
+    axis.text = element_text(
+      family = "sans",## Font
+      size=15)) +
+  theme_classic()
+
+SCP4 <- ggplot(sc, aes(x = day, y = YC), )+
+  geom_point(data = sc, aes(x = day, y = YC),
+             size=3, color="red", alpha=0.3)+
+  labs(x = "Day",
+       y = expression(paste(bold("Content")) ~ mu * g))+
+  geom_smooth(method = "loess", ## Locally weighted regression
+              se = FALSE, 
+              size = 1,
+              span = 0.8)+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..eq.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right", vjust = 0.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..rr.label.., 
+                                 ..adj.rr.label.., ## Show adjusted R2
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 1.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..AIC.label..,
+                                 ..BIC.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 3.2
+  )+
+  theme_bw()+
+  theme(axis.title = element_text(
+    family = "sans",## Caption font
+    face='bold', ## Font appearance
+    size=15, ## Font size
+    lineheight = 1),## Tag line spacing
+    axis.text = element_text(
+      family = "sans",## Font
+      size=15)) +
+  theme_classic()
+
+SCP3 <- ggplot(sc, aes(x = day, y = ZM2), )+
+  geom_point(data = sc, aes(x = day, y = ZM2),
+             size=3, color="red", alpha=0.3)+
+  labs(x = "Day",
+       y = expression(paste(bold("Content")) ~ mu * g))+
+  geom_smooth(method = "loess", ## Locally weighted regression
+              se = FALSE, 
+              size = 1,
+              span = 0.8)+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..eq.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right", vjust = 0.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..rr.label.., 
+                                 ..adj.rr.label.., ## Show adjusted R2
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 1.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..AIC.label..,
+                                 ..BIC.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 3.2
+  )+
+  theme_bw()+
+  theme(axis.title = element_text(
+    family = "sans",## Caption font
+    face='bold', ## Font appearance
+    size=15, ## Font size
+    lineheight = 1),## Tag line spacing
+    axis.text = element_text(
+      family = "sans",## Font
+      size=15)) +
+  theme_classic()
+
+SCP2 <- ggplot(sc, aes(x = day, y = YDWM), )+
+  geom_point(data = sc, aes(x = day, y = YDWM),
+             size=3, color="red", alpha=0.3)+
+  labs(x = "Day",
+       y = expression(paste(bold("Content")) ~ mu * g))+
+  geom_smooth(method = "loess", ## Locally weighted regression
+              se = FALSE, 
+              size = 1,
+              span = 0.8)+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..eq.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right", vjust = 0.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..rr.label.., 
+                                 ..adj.rr.label.., ## Show adjusted R2
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 1.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..AIC.label..,
+                                 ..BIC.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 3.2
+  )+
+  theme_bw()+
+  theme(axis.title = element_text(
+    family = "sans",## Caption font
+    face='bold', ## Font appearance
+    size=15, ## Font size
+    lineheight = 1),## Tag line spacing
+    axis.text = element_text(
+      family = "sans",## Font
+      size=15)) +
+  theme_classic()
+
+SCP1 <- ggplot(sc, aes(x = day, y = LD), )+
+  geom_point(data = sc, aes(x = day, y = LD),
+             size=3, color="red", alpha=0.3)+
+  labs(x = "Day",
+       y = expression(paste(bold("Content")) ~ mu * g))+
+  geom_smooth(method = "loess", ## Locally weighted regression
+              se = FALSE, 
+              size = 1,
+              span = 0.8)+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..eq.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right", vjust = 0.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..rr.label.., 
+                                 ..adj.rr.label.., ## Show adjusted R2
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 1.1
+  )+
+  stat_poly_eq(formula = y ~ poly(x, 3, raw = TRUE), 
+               aes(label = paste(..AIC.label..,
+                                 ..BIC.label..,
+                                 sep = "~~~"
+                                 )
+               ), 
+               parse = TRUE, label.x.npc = "right",vjust = 3.2
+  )+
+  theme_bw()+
+  theme(axis.title = element_text(
+    family = "sans",## Caption font
+    face='bold', ## Font appearance
+    size=15, ## Font size
+    lineheight = 1),## Tag line spacing
+    axis.text = element_text(
+      family = "sans",## Font
+      size=15)) +
+  theme_classic()
+
+mosaic2 <-  STDS + SCP1 + SCP2 + SCP3 + SCP4 + SCP5
+mosaic2
